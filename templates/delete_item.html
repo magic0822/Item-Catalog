@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="latest-items
+              col-xs-12">
+    <h2>
+        Are you sure to delete "{{item_name.capitalize()}}"?
+    </h2>
+    <form action="{{url_for('delete_item',
+                            category_name=category_name,
+                            item_name=item_name)}}"
+          method="post"
+          class="form-horizontal">
+        <hr>
+        <div class="form-group">
+            <button type="submit"
+                    class="btn
+                     btn-danger">
+                Yes
+            </button>
+            <a href="{{ url_for('show_item',
+                              category_name = category_name,
+                              item_name=item_name)}}"
+               class="btn
+                  btn-success"
+               role="button">
+                No
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock %}

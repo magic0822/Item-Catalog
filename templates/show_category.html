@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="content">
+    <h2>
+        {{category_name.capitalize()}} Items
+        {% if user_logged_in %}
+        <a href="{{url_for('add_item',
+                           category_name=category_name)}}"
+           class="btn
+                  btn-default"
+           role="button">
+            Add Item
+        </a>
+        {% endif %}
+    </h2>
+    {% for item in filtered_items %}
+    <div class="item">
+        <a href="{{url_for('show_item',
+                             category_name=item.category.name,
+                             item_name=item.name)}}">
+            {{item.name.capitalize()}}
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
